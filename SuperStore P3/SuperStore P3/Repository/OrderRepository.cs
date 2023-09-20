@@ -18,15 +18,5 @@ namespace EcoPower_Logistics.Repository
         {
             return GetAll().ToList();
         }
-
-        public void Create(Order entity)
-        {
-            Create(entity);
-        }
-
-        public void Delete(Order entity)
-        {
-            Delete(entity);
-        }
     }
 }

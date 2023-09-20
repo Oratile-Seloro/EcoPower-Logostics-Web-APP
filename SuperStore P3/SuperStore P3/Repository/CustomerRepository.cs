@@ -16,19 +16,6 @@ namespace EcoPower_Logistics.Repository
             return GetAll().FirstOrDefault(x => x.CustomerId == id);
         }
 
-        public IEnumerable<Customer> GetAllCustomers()
-        {
-            return GetAll().ToList();
-        }
-
-        public void Create(Customer entity)
-        {
-            Create(entity);
-        }
-
-        public void Delete(Customer entity)
-        {
-            Delete(entity);
-        }
+        
     }
 }

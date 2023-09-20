@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using Models;
 using Controllers;
+using System.Linq.Expressions;
 
 namespace EcoPower_Logistics.Repository
 {
@@ -22,7 +23,7 @@ namespace EcoPower_Logistics.Repository
         public void Create(T entity)
         {
            // _context.Set<T>().Add(entity);
-           try
+           try 
             {
                 _context.Add(entity);
                 _context.SaveChanges();
@@ -34,9 +35,31 @@ namespace EcoPower_Logistics.Repository
             }
         }
 
+        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        {
+            return _context.Set<T>().Where(expression);
+        }
+
         public IEnumerable<T> GetAll()
         {
             return _context.Set<T>().ToList();
+        }
+
+        public void Update(T entity)
+        { 
+            if (entity == null)
+            {
+                throw new ArgumentNullException($"{nameof(entity)} can not be null");
+            }
+            try
+            {
+                _context.Update(entity);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{nameof(entity)} could not be updated");
+            }
         }
         public void Delete(T entity)
         {
@@ -50,9 +73,10 @@ namespace EcoPower_Logistics.Repository
                 throw new Exception($"Couldn't delete: {ex.Message}");
             }
         }
-        public void DeleteConfirmed(IEnumerable<T> entities)
+
+        public T GetById(int id)
         {
-            _context.Set<T>().RemoveRange(entities);
+            return _context.Set<T>().Find(id);
         }
     }
 }
