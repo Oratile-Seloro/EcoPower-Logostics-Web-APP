@@ -11,24 +11,14 @@ namespace EcoPower_Logistics.Repository
         {
         }
 
-        public Product GetProductById(int id)
-        {
-            return GetAll().FirstOrDefault(x => x.ProductId == id);
-        }
-
         public IEnumerable<Product> GetAllProducts()
         {
             return GetAll().ToList();
         }
 
-        public void Create(Product entity)
+        public Product GetProductById(int id)
         {
-            Create(entity);
-        }
-
-        public void Delete(Product entity)
-        {
-            Delete(entity);
+            return GetAll().FirstOrDefault(x => x.ProductId == id);
         }
 
     }
