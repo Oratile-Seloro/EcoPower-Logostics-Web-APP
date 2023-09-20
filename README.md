@@ -10,3 +10,4 @@ Project 3 is a Web APP hosted on Azure based on EcoPower Logostics database. The
 Open the APP. Register a user name and password else if already registered, enter both your user name and password into the Login of the APP. After entering your details, you are given the option to create new, edit, update and delete entries. Each table name, Customer, Order and Product has it’s own page that displays all database entries of that table.There is a create new option at the top that allows the creation of a new entry. Each entry can be edited and deleted. The app offers a home page as well. To close the app just exit it. Any changes you made will have been implemented after you pressed the button related to the query.
 
 ## EcoPower_Logistics web app link
+
