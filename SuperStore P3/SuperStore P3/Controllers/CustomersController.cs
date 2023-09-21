@@ -23,11 +23,10 @@ namespace Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index(SuperStoreContext _context)
+        public async Task<IActionResult> Index()
         {
-            return _context.Customers != null ?
-            View(await _context.Customers.ToListAsync()) :
-
+            return _customerRepository != null ?
+            View(_customerRepository.GetAll()) :
             Problem("Entity set 'SuperStoreContext.Customers'  is null.");
 
         }
