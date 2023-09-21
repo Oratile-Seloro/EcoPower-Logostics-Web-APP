@@ -11,3 +11,4 @@ Open the APP. Register a user name and password else if already registered, ente
 
 
 ## EcoPower_Logistics web app link
+https://ecopowerlogisticswebapp2023.azurewebsites.net/
