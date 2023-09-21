@@ -13,16 +13,15 @@ using System.Linq.Expressions;
 
 namespace EcoPower_Logistics.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class // It is a Generic class that implements all the methods in the IGeneric Class
     {
         protected readonly SuperStoreContext _context;
         public GenericRepository(SuperStoreContext context)
         {
             _context = context;
         }
-        public void Create(T entity)
+        public void Create(T entity) // Adds and Saves the entry to the database
         {
-           // _context.Set<T>().Add(entity);
            try 
             {
                 _context.Add(entity);
@@ -35,17 +34,12 @@ namespace EcoPower_Logistics.Repository
             }
         }
 
-        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
-        {
-            return _context.Set<T>().Where(expression);
-        }
-
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll() // Displays all the entries
         {
             return _context.Set<T>().ToList();
         }
 
-        public void Update(T entity)
+        public void Update(T entity)//Updates and saves the changes made to the database
         { 
             if (entity == null)
             {
@@ -61,7 +55,7 @@ namespace EcoPower_Logistics.Repository
                 throw new Exception($"{nameof(entity)} could not be updated");
             }
         }
-        public void Delete(T entity)
+        public void Delete(T entity) // Deletes entries according to their ID and saves those changes to the database
         {
             try
             {
@@ -74,7 +68,7 @@ namespace EcoPower_Logistics.Repository
             }
         }
 
-        public T GetById(int id)
+        public T GetById(int id) // Finds the entry based on the ID
         {
             return _context.Set<T>().Find(id);
         }

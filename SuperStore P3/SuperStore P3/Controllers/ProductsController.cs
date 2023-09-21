@@ -26,7 +26,7 @@ namespace Controllers
         public async Task<IActionResult> Index()
         {
             return _productRepository != null ?
-                        View(_productRepository.GetAll()) :
+                        View(_productRepository.GetAll()) : //Fetched method from IGenericRepository for Products Controller
                         Problem("Entity set 'SuperStoreContext.Products'  is null.");
         }
 
@@ -38,7 +38,7 @@ namespace Controllers
                 return NotFound();
             }
 
-            var product = _productRepository.GetProductById(id);
+            var product = _productRepository.GetProductById(id);//Fetched method from IProductRepository to display ProductID
             if (product == null)
             {
                 return NotFound();
@@ -62,7 +62,7 @@ namespace Controllers
         {
             if (ModelState.IsValid)
             {
-                _productRepository.Create(product);
+                _productRepository.Create(product); //Fetched method from IGenericRepository to create a product entry
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -113,7 +113,7 @@ namespace Controllers
                 return NotFound();
             }
 
-            var product = _productRepository.GetProductById(id);
+            var product = _productRepository.GetProductById(id);//Fetched method from IProductRepository to display ProductID
             if (product == null)
             {
                 return NotFound();
@@ -131,7 +131,7 @@ namespace Controllers
             {
                 return Problem("Entity set 'SuperStoreContext.Products'  is null.");
             }
-            var product = _productRepository.GetById(id);
+            var product = _productRepository.GetById(id);//Fetched method from IGenericRepository to display ProductID
             if (product != null)
             {
                 _productRepository.Delete(product);

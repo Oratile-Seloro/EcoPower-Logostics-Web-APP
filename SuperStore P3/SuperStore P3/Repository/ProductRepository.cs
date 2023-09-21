@@ -5,7 +5,7 @@ using Azure.Identity;
 
 namespace EcoPower_Logistics.Repository
 {
-    public class ProductRepository : GenericRepository<Product>, IProductRepository
+    public class ProductRepository : GenericRepository<Product>, IProductRepository//Implements the method in IProductRepository
     {
         public ProductRepository(SuperStoreContext context) : base(context)
         {
@@ -18,7 +18,7 @@ namespace EcoPower_Logistics.Repository
 
         public Product GetProductById(int id)
         {
-            return GetAll().FirstOrDefault(x => x.ProductId == id);
+            return GetAll().FirstOrDefault(x => x.ProductId == id);//Gets a specfic id in the database based on the id inputted
         }
 
     }

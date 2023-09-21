@@ -50,7 +50,7 @@ namespace Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_customerRepository.GetAll(), "CustomerId", "CustomerId");
+            ViewData["CustomerId"] = new SelectList(_customerRepository.GetAll(), "CustomerId", "CustomerId"); //used declared _customerRepository to retrieve the methods in IGenericRepository to display customer table information
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace Controllers
                 _orderRepository.Create(order);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_customerRepository.GetAll(), "CustomerId", "CustomerId", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_customerRepository.GetAll(), "CustomerId", "CustomerId", order.CustomerId); //used declared _customerRepository to retrieve the methods in IGenericRepository to display customer table information along with the order table customerID
             return View(order);
         }
 
@@ -83,7 +83,7 @@ namespace Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_customerRepository.GetAll(), "CustomerId", "CustomerId", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_customerRepository.GetAll(), "CustomerId", "CustomerId", order.CustomerId); //used declared _customerRepository to retrieve the methods in IGenericRepository to display customer table information along with the order table customerID
             return View(order);
         }
 
@@ -104,7 +104,7 @@ namespace Controllers
                 _orderRepository.Update(order);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_customerRepository.GetAll(), "CustomerId", "CustomerId", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_customerRepository.GetAll(), "CustomerId", "CustomerId", order.CustomerId); //used declared _customerRepository to retrieve the methods in IGenericRepository to display customer table information along with the order table customerID
             return View(order);
         }
 
@@ -116,7 +116,7 @@ namespace Controllers
                 return NotFound();
             }
 
-            var order = _orderRepository.GetOrderById(id);
+            var order = _orderRepository.GetOrderById(id); //Fetched method from IOrderRepository to display OrderID
             if (order == null)
             {
                 return NotFound();
@@ -134,7 +134,7 @@ namespace Controllers
             {
                 return Problem("Entity set 'SuperStoreContext.Orders'  is null.");
             }
-            var order = _orderRepository.GetById(id);
+            var order = _orderRepository.GetById(id); //Fetched method from IGenericRepository
             if (order != null)
             {
                 _orderRepository.Delete(order);

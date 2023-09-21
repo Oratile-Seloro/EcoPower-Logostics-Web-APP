@@ -23,9 +23,13 @@ namespace Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(SuperStoreContext _context)
         {
-            return View(_customerRepository.GetAll());
+            return _context.Customers != null ?
+            View(await _context.Customers.ToListAsync()) :
+
+            Problem("Entity set 'SuperStoreContext.Customers'  is null.");
+
         }
 
         // GET: Customers/Details/5
@@ -37,7 +41,7 @@ namespace Controllers
             }
 
             var customer =  _customerRepository
-                .GetCustomerById(id);
+                .GetCustomerById(id); //Fetched method from ICustomerRepository to display CustomerID
             if (customer == null)
             {
                 return NotFound();
@@ -75,7 +79,7 @@ namespace Controllers
                 return NotFound();
             }
 
-            var customer =  _customerRepository.GetById(id);
+            var customer =  _customerRepository.GetById(id);//Fetched method from IGenericRepository to display CustomerID
             if (customer == null)
             {
                 return NotFound();
@@ -111,7 +115,7 @@ namespace Controllers
                 return NotFound();
             }
 
-            var customer =  _customerRepository.GetById(id);
+            var customer =  _customerRepository.GetById(id);//Fetched method from IGenericRepository to display CustomerID
             if (customer == null)
             {
                 return NotFound();
@@ -129,7 +133,7 @@ namespace Controllers
             {
                 return Problem("Entity set 'SuperStoreContext.Customers'  is null.");
             }
-            var customer = _customerRepository.GetById(id);
+            var customer = _customerRepository.GetById(id);//Fetched method from IGenericRepository to display CustomerID
             if (customer != null)
             {
                 _customerRepository.Delete(customer);

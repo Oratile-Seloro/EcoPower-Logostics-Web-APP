@@ -54,8 +54,8 @@ namespace Controllers
         // GET: OrderDetails/Create
         public IActionResult Create()
         {
-            ViewData["OrderId"] = new SelectList(_orderRepository.GetAll(), "OrderId", "OrderId");
-            ViewData["ProductId"] = new SelectList(_productRepository.GetAll(), "ProductId", "ProductId");
+            ViewData["OrderId"] = new SelectList(_orderRepository.GetAll(), "OrderId", "OrderId");//used declared _orderRepository to retrieve the methods in IGenericRepository to display order table information 
+            ViewData["ProductId"] = new SelectList(_productRepository.GetAll(), "ProductId", "ProductId");//used declared _productRepository to retrieve the methods in IGenericRepository to display product table information
             return View();
         }
 
@@ -71,8 +71,8 @@ namespace Controllers
                 _orderDetailRepository.Create(orderDetail);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OrderId"] = new SelectList(_orderRepository.GetAll(), "OrderId", "OrderId", orderDetail.OrderId);
-            ViewData["ProductId"] = new SelectList(_productRepository.GetAll(), "ProductId", "ProductId", orderDetail.ProductId);
+            ViewData["OrderId"] = new SelectList(_orderRepository.GetAll(), "OrderId", "OrderId", orderDetail.OrderId);//used declared _orderRepository to retrieve the methods in IGenericRepository to display order table information 
+            ViewData["ProductId"] = new SelectList(_productRepository.GetAll(), "ProductId", "ProductId", orderDetail.ProductId);//used declared _productRepository to retrieve the methods in IGenericRepository to display product table information
             return View(orderDetail);
         }
 
@@ -89,8 +89,8 @@ namespace Controllers
             {
                 return NotFound();
             }
-            ViewData["OrderId"] = new SelectList(_orderRepository.GetAll(), "OrderId", "OrderId", orderDetail.OrderId);
-            ViewData["ProductId"] = new SelectList(_productRepository.GetAll(), "ProductId", "ProductId", orderDetail.ProductId);
+            ViewData["OrderId"] = new SelectList(_orderRepository.GetAll(), "OrderId", "OrderId", orderDetail.OrderId);//used declared _orderRepository to retrieve the methods in IGenericRepository to display order table information
+            ViewData["ProductId"] = new SelectList(_productRepository.GetAll(), "ProductId", "ProductId", orderDetail.ProductId);//used declared _productRepository to retrieve the methods in IGenericRepository to display product table information
             return View(orderDetail);
         }
 
@@ -111,8 +111,8 @@ namespace Controllers
                 _orderDetailRepository.Update(orderDetail);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OrderId"] = new SelectList(_orderRepository.GetAll(), "OrderId", "OrderId", orderDetail.OrderId);
-            ViewData["ProductId"] = new SelectList(_productRepository.GetAll(), "ProductId", "ProductId", orderDetail.ProductId);
+            ViewData["OrderId"] = new SelectList(_orderRepository.GetAll(), "OrderId", "OrderId", orderDetail.OrderId);//used declared _orderRepository to retrieve the methods in IGenericRepository to display order table information
+            ViewData["ProductId"] = new SelectList(_productRepository.GetAll(), "ProductId", "ProductId", orderDetail.ProductId);//used declared _productRepository to retrieve the methods in IGenericRepository to display product table information
             return View(orderDetail);
         }
 
